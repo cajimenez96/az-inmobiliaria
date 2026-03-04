@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "properties": "Propiedades",
+    "contact": "Contacto",
+    "signIn": "Iniciar sesión",
+    "getStarted": "Comenzar",
+    "toggleMenu": "Abrir menú"
+  },
+  "hero": {
+    "badge": "Inmobiliaria reimaginada",
+    "title": "Encuentra tu ritmo en la",
+    "titleHighlight": "casa perfecta",
+    "subtitle": "{companyName} te conecta con las propiedades más exclusivas en las mejores ubicaciones. Compra, alquila o vende con confianza y rapidez.",
+    "searchPlaceholder": "Ciudad, barrio o dirección",
+    "searchButton": "Buscar",
+    "searchError": "Introduce un término de búsqueda.",
+    "imageAlt": "Fondo de vivienda de lujo"
+  },
+  "stats": {
+    "activeListings": "Anuncios activos",
+    "soldProperties": "Propiedades vendidas",
+    "satisfiedClients": "Clientes satisfechos"
+  },
+  "featured": {
+    "title": "Propiedades destacadas",
+    "subtitle": "Selección de anuncios para ti.",
+    "viewAll": "Ver todo",
+    "viewAllListings": "Ver todos los anuncios"
+  },
+  "values": {
+    "title": "¿Por qué elegir {companyName}?",
+    "description": "No solo vendemos casas; te ayudamos a encontrar un lugar donde vivir. Nuestra tecnología y agentes expertos hacen el proceso sencillo.",
+    "item1": "Herramientas de valoración con IA",
+    "item2": "Anuncios exclusivos fuera de mercado",
+    "item3": "Comisiones transparentes del 1%",
+    "item4": "Concierge inmobiliario 24/7",
+    "cta": "Comenzar tu camino",
+    "imageAlt": "Diseño de interiores"
+  },
+  "about": {
+    "badge": "Desde 2014",
+    "title": "Somos {companyName}",
+    "subtitle": "Tendiendo puentes entre la tecnología moderna y el servicio inmobiliario tradicional. Creemos que comprar una casa debería ser tan fácil como pedir un viaje.",
+    "missionTitle": "Nuestra misión",
+    "missionDescription": "En {companyName} no solo vendemos propiedades; diseñamos estilos de vida. Nuestra misión es democratizar el acceso a datos inmobiliarios premium y ofrecer un servicio excepcional a cada cliente.",
+    "missionAward": "Premiados",
+    "missionAwardDesc": "Reconocidos globalmente por la excelencia.",
+    "missionClient": "Enfoque en el cliente",
+    "missionClientDesc": "Más de 10.000 familias instaladas.",
+    "missionNetwork": "Amplia red",
+    "missionNetworkDesc": "Anuncios en más de 50 ciudades.",
+    "missionTransparency": "Transparencia",
+    "missionTransparencyDesc": "Sin comisiones ocultas, nunca."
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes una pregunta sobre una propiedad o quieres anunciar la tuya? Nuestro equipo está listo para ayudarte 24/7.",
+    "headquarters": "Sede central",
+    "phoneLabel": "Teléfono",
+    "emailLabel": "Correo electrónico"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Introduce tu correo para acceder a tu cuenta",
+      "noAccount": "¿No tienes cuenta?",
+      "signUpLink": "Regístrate",
+      "imageAlt": "Inmobiliaria de lujo",
+      "quote": "{companyName} me ayudó a encontrar no solo una casa, sino un hogar donde mi familia podría crecer. El proceso fue impecable.",
+      "quoteAuthor": "— Sofia Davis, propietaria"
+    },
+    "signUp": {
+      "title": "Crear cuenta",
+      "subtitle": "Introduce tus datos para empezar con tu propiedad",
+      "hasAccount": "¿Ya tienes cuenta?",
+      "signInLink": "Iniciar sesión",
+      "imageAlt": "Inmobiliaria de lujo"
+    },
+    "signOut": "Cerrar sesión"
+  },
+  "dashboard": {
+    "agentBrand": "Agente {companyName}",
+    "overview": "Resumen",
+    "addProperty": "Añadir propiedad",
+    "settings": "Configuración web",
+    "settingsTitle": "Información de la empresa",
+    "settingsDescription": "Edita los datos de tu empresa. Los cambios se aplican en la web al instante.",
+    "save": "Guardar cambios",
+    "saved": "Guardado.",
+    "identity": "Identidad",
+    "meta": "SEO",
+    "contact": "Contacto",
+    "social": "Redes sociales",
+    "stats": "Estadísticas (inicio)"
+  },
+  "properties": {
+    "title": "Encuentra tu hogar",
+    "browsingCount": "Viendo {count} propiedades en tu red.",
+    "showFilters": "Mostrar filtros"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "ariaTwitter": "Twitter",
+    "ariaInstagram": "Instagram",
+    "ariaFacebook": "Facebook"
+  },
+  "common": {
+    "search": "Buscar",
+    "viewAll": "Ver todo",
+    "loading": "Cargando...",
+    "error": "Algo ha ido mal."
+  }
+}

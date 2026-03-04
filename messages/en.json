@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "properties": "Properties",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "getStarted": "Get Started",
+    "toggleMenu": "Toggle menu"
+  },
+  "hero": {
+    "badge": "Real Estate Reimagined",
+    "title": "Find Your Pulse in the",
+    "titleHighlight": "Perfect Home",
+    "subtitle": "{companyName} connects you with the most exclusive properties in top locations. Buy, rent, or sell with confidence and speed.",
+    "searchPlaceholder": "City, Neighborhood, or Address",
+    "searchButton": "Search",
+    "searchError": "Please enter a search query.",
+    "imageAlt": "Luxury Home Background"
+  },
+  "stats": {
+    "activeListings": "Active Listings",
+    "soldProperties": "Sold Properties",
+    "satisfiedClients": "Satisfied Clients"
+  },
+  "featured": {
+    "title": "Featured Properties",
+    "subtitle": "Handpicked listings just for you.",
+    "viewAll": "View All",
+    "viewAllListings": "View All Listings"
+  },
+  "values": {
+    "title": "Why Choose {companyName}?",
+    "description": "We don't just sell houses; we help you find a place where your life happens. Our proprietary tech and expert agents make the process seamless.",
+    "item1": "Market-leading AI valuation tools",
+    "item2": "Exclusive off-market listings",
+    "item3": "Transparent 1% commission rates",
+    "item4": "24/7 Dedicated property concierge",
+    "cta": "Start Your Journey",
+    "imageAlt": "Interior Design"
+  },
+  "about": {
+    "badge": "Since 2014",
+    "title": "We Are {companyName}",
+    "subtitle": "Bridging the gap between modern technology and traditional real estate service. We believe buying a home should be as seamless as ordering a ride.",
+    "missionTitle": "Our Mission",
+    "missionDescription": "At {companyName}, we don't just sell properties; we engineer lifestyles. Our mission is to democratize access to premium real estate data while providing white-glove service to every client, regardless of budget.",
+    "missionAward": "Award Winning",
+    "missionAwardDesc": "Recognized globally for excellence.",
+    "missionClient": "Client Focus",
+    "missionClientDesc": "Over 10,000 happy families settled.",
+    "missionNetwork": "Wide Network",
+    "missionNetworkDesc": "Listings across 50+ major cities.",
+    "missionTransparency": "Transparency",
+    "missionTransparencyDesc": "No hidden fees, ever."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have a question about a property or want to list your home? Our team is ready to help you 24/7.",
+    "headquarters": "Headquarters",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Welcome back",
+      "subtitle": "Enter your email below to login to your account",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up",
+      "imageAlt": "Luxury Real Estate",
+      "quote": "{companyName} helped me find not just a house, but a home where my family could grow. The process was seamless.",
+      "quoteAuthor": "— Sofia Davis, Homeowner"
+    },
+    "signUp": {
+      "title": "Create an account",
+      "subtitle": "Enter your information to start your property journey",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "imageAlt": "Luxury Real Estate"
+    },
+    "signOut": "Sign Out"
+  },
+  "dashboard": {
+    "agentBrand": "{companyName} Agent",
+    "overview": "Overview",
+    "addProperty": "Add Property",
+    "settings": "Web settings",
+    "settingsTitle": "Company information",
+    "settingsDescription": "Edit your company data. Changes apply across the site immediately.",
+    "save": "Save changes",
+    "saved": "Saved.",
+    "identity": "Identity",
+    "meta": "SEO",
+    "contact": "Contact",
+    "social": "Social links",
+    "stats": "Statistics (home)"
+  },
+  "properties": {
+    "title": "Find Your Home",
+    "browsingCount": "Browsing {count} properties in your network.",
+    "showFilters": "Show Filters"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "ariaTwitter": "Twitter",
+    "ariaInstagram": "Instagram",
+    "ariaFacebook": "Facebook"
+  },
+  "common": {
+    "search": "Search",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "error": "Something went wrong."
+  }
+}

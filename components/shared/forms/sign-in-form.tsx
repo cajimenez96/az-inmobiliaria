@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +17,8 @@ type SignInFormValues = z.infer<typeof signInSchema>;
 
 const SignInForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
 
   const {
     register,
@@ -32,11 +35,11 @@ const SignInForm = () => {
         {
           email: values.email,
           password: values.password,
-          callbackURL: "/",
+          callbackURL: `/${locale}`,
         },
         {
           onSuccess: () => {
-            window.location.href = "/";
+            window.location.href = `/${locale}`;
           },
           onError: () => {
             toast.error("Invalid email or password.");

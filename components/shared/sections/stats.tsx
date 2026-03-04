@@ -1,14 +1,19 @@
-const STATS = [
-  { label: "Active Listings", value: "2,500+" },
-  { label: "Sold Properties", value: "850+" },
-  { label: "Satisfied Clients", value: "98%" },
-];
+import { getCompanyConfig } from "@/lib/company";
+import { getTranslations } from "next-intl/server";
 
-const Stats = () => {
+const Stats = async () => {
+  const t = await getTranslations("stats");
+  const company = await getCompanyConfig();
+  const statItems = [
+    { label: t("activeListings"), value: company.stats.listingsCount },
+    { label: t("soldProperties"), value: company.stats.soldCount },
+    { label: t("satisfiedClients"), value: company.stats.satisfactionPercent },
+  ];
+
   return (
     <section className="border-b bg-background py-10">
       <div className="container mx-auto flex flex-col items-center justify-around gap-8 px-4 sm:flex-row md:gap-16 sm:px-6 lg:px-8">
-        {STATS.map((stat, index) => (
+        {statItems.map((stat, index) => (
           <div key={index} className="text-center">
             <div className="text-3xl font-bold text-primary md:text-4xl">
               {stat.value}
