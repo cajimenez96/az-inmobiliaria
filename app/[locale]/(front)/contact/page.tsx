@@ -1,3 +1,4 @@
+import { getCompanyConfig } from "@/lib/company";
 import { getTranslations } from "next-intl/server";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5,6 +6,7 @@ import ContactForm from "@/components/shared/forms/contact-form";
 
 export default async function ContactPage() {
   const t = await getTranslations("contact");
+  const company = getCompanyConfig();
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 md:py-20">
@@ -25,7 +27,7 @@ export default async function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">{t("headquarters")}</h3>
-                  <p className="text-muted-foreground mt-1">{t("address")}</p>
+                  <p className="text-muted-foreground mt-1">{company.contact.address}</p>
                 </div>
               </CardContent>
             </Card>
@@ -36,10 +38,10 @@ export default async function ContactPage() {
                   <Phone className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Phone</h3>
-                  <p className="text-muted-foreground mt-1">{t("phone")}</p>
+                  <h3 className="font-semibold text-lg">{t("phoneLabel")}</h3>
+                  <p className="text-muted-foreground mt-1">{company.contact.phone}</p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    {t("phoneSchedule")}
+                    {company.contact.phoneSchedule}
                   </p>
                 </div>
               </CardContent>
@@ -51,10 +53,10 @@ export default async function ContactPage() {
                   <Mail className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Email</h3>
-                  <p className="text-muted-foreground mt-1">{t("email")}</p>
+                  <h3 className="font-semibold text-lg">{t("emailLabel")}</h3>
+                  <p className="text-muted-foreground mt-1">{company.contact.email}</p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    {t("emailSupport")}
+                    {company.contact.emailSupport}
                   </p>
                 </div>
               </CardContent>

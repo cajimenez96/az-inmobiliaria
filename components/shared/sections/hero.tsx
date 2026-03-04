@@ -11,7 +11,11 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
-const Hero = () => {
+interface HeroProps {
+  companyName: string;
+}
+
+const Hero = ({ companyName }: HeroProps) => {
   const [query, setQuery] = useState("");
   const params = useParams();
   const locale = (params?.locale as string) || "en";
@@ -51,7 +55,7 @@ const Hero = () => {
           <span className="text-primary-foreground/90">{t("titleHighlight")}</span>
         </h1>
         <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-200 sm:text-xl">
-          {t("subtitle")}
+          {t("subtitle", { companyName })}
         </p>
 
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-2 rounded-lg bg-white p-2 shadow-2xl sm:flex-row sm:items-center">

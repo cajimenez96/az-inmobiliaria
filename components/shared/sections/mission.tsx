@@ -1,9 +1,11 @@
+import { getCompanyConfig } from "@/lib/company";
 import { getTranslations } from "next-intl/server";
 import { CheckCircle2, Globe, Trophy, Users } from "lucide-react";
 import Image from "next/image";
 
 const Mission = async () => {
   const t = await getTranslations("about");
+  const company = getCompanyConfig();
   const items = [
     { icon: Trophy, titleKey: "missionAward", descKey: "missionAwardDesc" },
     { icon: Users, titleKey: "missionClient", descKey: "missionClientDesc" },
@@ -20,7 +22,7 @@ const Mission = async () => {
               {t("missionTitle")}
             </h2>
             <p className="text-muted-foreground text-lg mb-6">
-              {t("missionDescription")}
+              {t("missionDescription", { companyName: company.name })}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {items.map((item, i) => (

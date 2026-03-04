@@ -3,6 +3,7 @@ import { LayoutDashboard, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AgentProfileCard from "@/components/shared/dashboard/agent-profile-card";
 import { auth } from "@/lib/auth";
+import { getCompanyConfig } from "@/lib/company";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import { redirect } from "@/i18n/navigation";
@@ -19,6 +20,7 @@ export default async function DashboardLayout({
     headers: await headers(),
   });
   const t = await getTranslations("dashboard");
+  const company = getCompanyConfig();
 
   if (!session) {
     redirect({ href: "/sign-in", locale: locale as "en" | "es" });
@@ -32,7 +34,7 @@ export default async function DashboardLayout({
     <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
       <aside className="hidden w-64 flex-col border-r bg-white dark:bg-slate-900 md:flex">
         <div className="flex h-16 items-center gap-2 border-b px-6">
-          <span className="text-xl font-bold tracking-tight">{t("brand")}</span>
+          <span className="text-xl font-bold tracking-tight">{company.name}</span>
         </div>
 
         <nav className="flex-1 space-y-1 p-4">
@@ -53,7 +55,7 @@ export default async function DashboardLayout({
 
       <main className="flex-1 flex flex-col">
         <header className="flex h-16 items-center border-b bg-white px-6 md:hidden dark:bg-slate-900">
-          <span className="font-bold">{t("agentBrand")}</span>
+          <span className="font-bold">{t("agentBrand", { companyName: company.name })}</span>
         </header>
         <div className="flex-1 p-6 md:p-8 overflow-auto">{children}</div>
       </main>

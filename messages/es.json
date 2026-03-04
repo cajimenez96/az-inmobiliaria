@@ -1,13 +1,4 @@
 {
-  "company": {
-    "name": "Proppulse",
-    "tagline": "Inmobiliaria reimaginada",
-    "since": "Desde 2014"
-  },
-  "meta": {
-    "title": "Proppulse Inmobiliaria",
-    "description": "Plataforma inmobiliaria moderna. Explora, publica y gestiona propiedades."
-  },
   "nav": {
     "home": "Inicio",
     "about": "Nosotros",
@@ -21,7 +12,7 @@
     "badge": "Inmobiliaria reimaginada",
     "title": "Encuentra tu ritmo en la",
     "titleHighlight": "casa perfecta",
-    "subtitle": "Proppulse te conecta con las propiedades más exclusivas en las mejores ubicaciones. Compra, alquila o vende con confianza y rapidez.",
+    "subtitle": "{companyName} te conecta con las propiedades más exclusivas en las mejores ubicaciones. Compra, alquila o vende con confianza y rapidez.",
     "searchPlaceholder": "Ciudad, barrio o dirección",
     "searchButton": "Buscar",
     "searchError": "Introduce un término de búsqueda.",
@@ -30,10 +21,7 @@
   "stats": {
     "activeListings": "Anuncios activos",
     "soldProperties": "Propiedades vendidas",
-    "satisfiedClients": "Clientes satisfechos",
-    "valueListings": "2.500+",
-    "valueSold": "850+",
-    "valueClients": "98%"
+    "satisfiedClients": "Clientes satisfechos"
   },
   "featured": {
     "title": "Propiedades destacadas",
@@ -42,7 +30,7 @@
     "viewAllListings": "Ver todos los anuncios"
   },
   "values": {
-    "title": "¿Por qué elegir Proppulse?",
+    "title": "¿Por qué elegir {companyName}?",
     "description": "No solo vendemos casas; te ayudamos a encontrar un lugar donde vivir. Nuestra tecnología y agentes expertos hacen el proceso sencillo.",
     "item1": "Herramientas de valoración con IA",
     "item2": "Anuncios exclusivos fuera de mercado",
@@ -53,10 +41,10 @@
   },
   "about": {
     "badge": "Desde 2014",
-    "title": "Somos Proppulse",
+    "title": "Somos {companyName}",
     "subtitle": "Tendiendo puentes entre la tecnología moderna y el servicio inmobiliario tradicional. Creemos que comprar una casa debería ser tan fácil como pedir un viaje.",
     "missionTitle": "Nuestra misión",
-    "missionDescription": "En Proppulse no solo vendemos propiedades; diseñamos estilos de vida. Nuestra misión es democratizar el acceso a datos inmobiliarios premium y ofrecer un servicio excepcional a cada cliente.",
+    "missionDescription": "En {companyName} no solo vendemos propiedades; diseñamos estilos de vida. Nuestra misión es democratizar el acceso a datos inmobiliarios premium y ofrecer un servicio excepcional a cada cliente.",
     "missionAward": "Premiados",
     "missionAwardDesc": "Reconocidos globalmente por la excelencia.",
     "missionClient": "Enfoque en el cliente",
@@ -70,11 +58,8 @@
     "title": "Contáctanos",
     "subtitle": "¿Tienes una pregunta sobre una propiedad o quieres anunciar la tuya? Nuestro equipo está listo para ayudarte 24/7.",
     "headquarters": "Sede central",
-    "address": "123 Innovation Blvd, Tech District, CA 90210",
-    "phone": "+1 (555) 000-0000",
-    "phoneSchedule": "Lun-Vie de 8:00 a 18:00",
-    "email": "hello@proppulse.com",
-    "emailSupport": "support@proppulse.com"
+    "phoneLabel": "Teléfono",
+    "emailLabel": "Correo electrónico"
   },
   "auth": {
     "signIn": {
@@ -83,7 +68,7 @@
       "noAccount": "¿No tienes cuenta?",
       "signUpLink": "Regístrate",
       "imageAlt": "Inmobiliaria de lujo",
-      "quote": "Proppulse me ayudó a encontrar no solo una casa, sino un hogar donde mi familia podría crecer. El proceso fue impecable.",
+      "quote": "{companyName} me ayudó a encontrar no solo una casa, sino un hogar donde mi familia podría crecer. El proceso fue impecable.",
       "quoteAuthor": "— Sofia Davis, propietaria"
     },
     "signUp": {
@@ -96,8 +81,7 @@
     "signOut": "Cerrar sesión"
   },
   "dashboard": {
-    "brand": "Proppulse",
-    "agentBrand": "Proppulse Agent",
+    "agentBrand": "Agente {companyName}",
     "overview": "Resumen",
     "addProperty": "Añadir propiedad"
   },

@@ -99,7 +99,7 @@ const UserDropdown = () => {
                ${
                  isAgent
                    ? "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                   : "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90"
+                   : "bg-linear-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90"
                }
              `}
           >

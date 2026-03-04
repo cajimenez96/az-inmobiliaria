@@ -1,0 +1,28 @@
+{
+  "name": "AZ Inmobiliaria",
+  "tagline": "Inmobiliaria moderna",
+  "since": "Desde 2026",
+  "legalName": "AZ Inmobiliaria",
+  "meta": {
+    "defaultTitle": "AZ Inmobiliaria",
+    "titleTemplate": "%s | {companyName}",
+    "defaultDescription": "Inmobiliaria moderna. Busca, lista y gestiona propiedades."
+  },
+  "contact": {
+    "address": "Av. Córdoba 1234, Tucumán, Argentina",
+    "phone": "+54 9 381 521-8630",
+    "phoneSchedule": "Lun-Vie de 8:00 a 18:00",
+    "email": "hola@azmarketing.com.ar",
+    "emailSupport": "soporte@azmarketing.com.ar"
+  },
+  "social": {
+    "twitterUrl": "#",
+    "instagramUrl": "#",
+    "facebookUrl": "#"
+  },
+  "stats": {
+    "listingsCount": "2,500+",
+    "soldCount": "850+",
+    "satisfactionPercent": "98%"
+  }
+}

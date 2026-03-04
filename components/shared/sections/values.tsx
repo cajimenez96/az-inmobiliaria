@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { getCompanyConfig } from "@/lib/company";
 import { getTranslations } from "next-intl/server";
 import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
 const Values = async () => {
   const t = await getTranslations("values");
+  const company = getCompanyConfig();
   const items = [t("item1"), t("item2"), t("item3"), t("item4")];
 
   return (
@@ -20,7 +22,7 @@ const Values = async () => {
         </div>
         <div className="flex flex-col justify-center">
           <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl">
-            {t("title")}
+            {t("title", { companyName: company.name })}
           </h2>
           <p className="mb-8 text-lg text-muted-foreground">{t("description")}</p>
           <ul className="space-y-4">

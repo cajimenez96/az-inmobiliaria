@@ -1,13 +1,4 @@
 {
-  "company": {
-    "name": "Proppulse",
-    "tagline": "Real Estate Reimagined",
-    "since": "Since 2014"
-  },
-  "meta": {
-    "title": "Proppulse Real Estate",
-    "description": "Modern real estate platform. Browse, list, and manage properties."
-  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -21,7 +12,7 @@
     "badge": "Real Estate Reimagined",
     "title": "Find Your Pulse in the",
     "titleHighlight": "Perfect Home",
-    "subtitle": "PropPulse connects you with the most exclusive properties in top locations. Buy, rent, or sell with confidence and speed.",
+    "subtitle": "{companyName} connects you with the most exclusive properties in top locations. Buy, rent, or sell with confidence and speed.",
     "searchPlaceholder": "City, Neighborhood, or Address",
     "searchButton": "Search",
     "searchError": "Please enter a search query.",
@@ -30,10 +21,7 @@
   "stats": {
     "activeListings": "Active Listings",
     "soldProperties": "Sold Properties",
-    "satisfiedClients": "Satisfied Clients",
-    "valueListings": "2,500+",
-    "valueSold": "850+",
-    "valueClients": "98%"
+    "satisfiedClients": "Satisfied Clients"
   },
   "featured": {
     "title": "Featured Properties",
@@ -42,7 +30,7 @@
     "viewAllListings": "View All Listings"
   },
   "values": {
-    "title": "Why Choose PropPulse?",
+    "title": "Why Choose {companyName}?",
     "description": "We don't just sell houses; we help you find a place where your life happens. Our proprietary tech and expert agents make the process seamless.",
     "item1": "Market-leading AI valuation tools",
     "item2": "Exclusive off-market listings",
@@ -53,10 +41,10 @@
   },
   "about": {
     "badge": "Since 2014",
-    "title": "We Are Proppulse",
+    "title": "We Are {companyName}",
     "subtitle": "Bridging the gap between modern technology and traditional real estate service. We believe buying a home should be as seamless as ordering a ride.",
     "missionTitle": "Our Mission",
-    "missionDescription": "At PropPulse, we don't just sell properties; we engineer lifestyles. Our mission is to democratize access to premium real estate data while providing white-glove service to every client, regardless of budget.",
+    "missionDescription": "At {companyName}, we don't just sell properties; we engineer lifestyles. Our mission is to democratize access to premium real estate data while providing white-glove service to every client, regardless of budget.",
     "missionAward": "Award Winning",
     "missionAwardDesc": "Recognized globally for excellence.",
     "missionClient": "Client Focus",
@@ -70,11 +58,8 @@
     "title": "Get in Touch",
     "subtitle": "Have a question about a property or want to list your home? Our team is ready to help you 24/7.",
     "headquarters": "Headquarters",
-    "address": "123 Innovation Blvd, Tech District, CA 90210",
-    "phone": "+1 (555) 000-0000",
-    "phoneSchedule": "Mon-Fri from 8am to 6pm",
-    "email": "hello@proppulse.com",
-    "emailSupport": "support@proppulse.com"
+    "phoneLabel": "Phone",
+    "emailLabel": "Email"
   },
   "auth": {
     "signIn": {
@@ -83,7 +68,7 @@
       "noAccount": "Don't have an account?",
       "signUpLink": "Sign up",
       "imageAlt": "Luxury Real Estate",
-      "quote": "Proppulse helped me find not just a house, but a home where my family could grow. The process was seamless.",
+      "quote": "{companyName} helped me find not just a house, but a home where my family could grow. The process was seamless.",
       "quoteAuthor": "— Sofia Davis, Homeowner"
     },
     "signUp": {
@@ -96,8 +81,7 @@
     "signOut": "Sign Out"
   },
   "dashboard": {
-    "brand": "Proppulse",
-    "agentBrand": "Proppulse Agent",
+    "agentBrand": "{companyName} Agent",
     "overview": "Overview",
     "addProperty": "Add Property"
   },

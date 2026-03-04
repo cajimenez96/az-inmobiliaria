@@ -1,11 +1,13 @@
+import { getCompanyConfig } from "@/lib/company";
 import { getTranslations } from "next-intl/server";
 
 const Stats = async () => {
   const t = await getTranslations("stats");
+  const company = getCompanyConfig();
   const statItems = [
-    { label: t("activeListings"), value: t("valueListings") },
-    { label: t("soldProperties"), value: t("valueSold") },
-    { label: t("satisfiedClients"), value: t("valueClients") },
+    { label: t("activeListings"), value: company.stats.listingsCount },
+    { label: t("soldProperties"), value: company.stats.soldCount },
+    { label: t("satisfiedClients"), value: company.stats.satisfactionPercent },
   ];
 
   return (

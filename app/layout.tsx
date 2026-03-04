@@ -3,16 +3,24 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 import { Toaster } from "sonner";
+import { getCompanyConfig } from "@/lib/company";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: { template: "%s | Proppulse", default: "Proppulse" },
-  description: "Real estate platform. Browse, list, and manage properties.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const company = getCompanyConfig();
+  const template = company.meta.titleTemplate.replace(
+    "{companyName}",
+    company.name,
+  );
+  return {
+    title: { template, default: company.meta.defaultTitle },
+    description: company.meta.defaultDescription,
+  };
+}
 
 export default function RootLayout({
   children,

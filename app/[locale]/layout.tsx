@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
+import { getCompanyConfig } from "@/lib/company";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "meta" });
+export async function generateMetadata(): Promise<Metadata> {
+  const company = getCompanyConfig();
   return {
-    title: t("title"),
-    description: t("description"),
+    title: company.meta.defaultTitle,
+    description: company.meta.defaultDescription,
   };
 }
 

@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import SignInForm from "@/components/shared/forms/sign-in-form";
 import { auth } from "@/lib/auth";
+import { getCompanyConfig } from "@/lib/company";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import { redirect } from "@/i18n/navigation";
@@ -19,6 +20,7 @@ export default async function SignInPage({
   if (session) redirect({ href: "/", locale: locale as "en" | "es" });
 
   const t = await getTranslations("auth");
+  const company = getCompanyConfig();
 
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
@@ -54,7 +56,7 @@ export default async function SignInPage({
         <div className="absolute bottom-10 left-10 right-10 text-white z-10">
           <blockquote className="space-y-2">
             <p className="text-lg font-medium leading-relaxed">
-              &ldquo;{t("signIn.quote")}&rdquo;
+              &ldquo;{t("signIn.quote", { companyName: company.name })}&rdquo;
             </p>
             <footer className="text-sm opacity-80">{t("signIn.quoteAuthor")}</footer>
           </blockquote>
