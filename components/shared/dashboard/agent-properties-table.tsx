@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { PropertyType, Status } from "@/lib/generated/prisma/enums";
 import { formatType } from "@/lib/utils";
 import { deleteProperty } from "@/lib/actions/property.actions";

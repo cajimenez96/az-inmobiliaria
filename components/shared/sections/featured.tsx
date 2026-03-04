@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { getFeaturedProperties } from "@/lib/actions/property.actions";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import PropertyCard from "../properties/property-card";
 
 const Featured = async () => {
-  const FEATURED_PROPERTIES = await getFeaturedProperties();
+  const [FEATURED_PROPERTIES, t] = await Promise.all([
+    getFeaturedProperties(),
+    getTranslations("featured"),
+  ]);
 
   return (
     <section className="bg-slate-50 py-20 dark:bg-slate-950">
@@ -13,15 +17,13 @@ const Featured = async () => {
         <div className="mb-12 flex items-end justify-between">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Featured Properties
+              {t("title")}
             </h2>
-            <p className="mt-2 text-muted-foreground">
-              Handpicked listings just for you.
-            </p>
+            <p className="mt-2 text-muted-foreground">{t("subtitle")}</p>
           </div>
           <Button variant="outline" asChild className="hidden sm:flex">
             <Link href="/properties">
-              View All <ArrowRight className="ml-2 h-4 w-4" />
+              {t("viewAll")} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
@@ -34,7 +36,7 @@ const Featured = async () => {
 
         <div className="mt-8 sm:hidden">
           <Button variant="outline" asChild className="w-full">
-            <Link href="/properties">View All Listings</Link>
+            <Link href="/properties">{t("viewAllListings")}</Link>
           </Button>
         </div>
       </div>

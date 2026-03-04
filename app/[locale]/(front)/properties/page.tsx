@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PropertyFeed from "@/components/shared/properties/property-feed";
@@ -11,13 +12,16 @@ export default async function PropertiesPage({
 }) {
   const resolvedParams = await searchParams;
 
-  const properties = await getProperties({
-    query: resolvedParams.query as string,
-    type: resolvedParams.type as string,
-    beds: resolvedParams.beds as string,
-    baths: resolvedParams.baths as string,
-    amenities: resolvedParams.amenities,
-  });
+  const [properties, t] = await Promise.all([
+    getProperties({
+      query: resolvedParams.query as string,
+      type: resolvedParams.type as string,
+      beds: resolvedParams.beds as string,
+      baths: resolvedParams.baths as string,
+      amenities: resolvedParams.amenities,
+    }),
+    getTranslations("properties"),
+  ]);
 
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950">
@@ -26,10 +30,10 @@ export default async function PropertiesPage({
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <h1 className="text-3xl font-bold tracking-tight">
-                Find Your Home
+                {t("title")}
               </h1>
               <p className="text-muted-foreground mt-1">
-                Browsing {properties.length} properties in your network.
+                {t("browsingCount", { count: properties.length })}
               </p>
             </div>
           </div>
@@ -45,7 +49,7 @@ export default async function PropertiesPage({
           <main className="lg:col-span-3">
             <div className="lg:hidden mb-6">
               <Button variant="outline" className="w-full">
-                <SlidersHorizontal className="mr-2 h-4 w-4" /> Show Filters
+                <SlidersHorizontal className="mr-2 h-4 w-4" /> {t("showFilters")}
               </Button>
             </div>
 

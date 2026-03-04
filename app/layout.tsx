@@ -10,9 +10,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Proppulse Real Estate",
-  description:
-    "Modern real estate platform built with Next.js 16, shadcn/ui, and Prisma. Browse, list, and manage properties",
+  title: { template: "%s | Proppulse", default: "Proppulse" },
+  description: "Real estate platform. Browse, list, and manage properties.",
 };
 
 export default function RootLayout({

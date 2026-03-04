@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Link } from "@/i18n/navigation";
 import {
   LogOut,
   User2,
@@ -26,6 +27,8 @@ import { switchUserRole } from "@/lib/actions/user.actions";
 const UserDropdown = () => {
   const { data: session } = authClient.useSession();
   const [isLoading, setIsLoading] = useState(false);
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
 
   if (!session) return null;
 
@@ -134,9 +137,9 @@ const UserDropdown = () => {
           onClick={async () => {
             await authClient.signOut({
               fetchOptions: {
-                onSuccess: () => {
-                  window.location.href = "/sign-in";
-                },
+onSuccess: () => {
+                window.location.href = `/${locale}/sign-in`;
+              },
               },
             });
           }}

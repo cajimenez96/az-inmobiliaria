@@ -1,31 +1,19 @@
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { getTranslations } from "next-intl/server";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import Image from "next/image";
 import ContactForm from "@/components/shared/forms/contact-form";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const t = await getTranslations("contact");
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Get in Touch
+            {t("title")}
           </h1>
-          <p className="text-muted-foreground text-lg">
-            Have a question about a property or want to list your home? Our team
-            is ready to help you 24/7.
-          </p>
+          <p className="text-muted-foreground text-lg">{t("subtitle")}</p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
@@ -36,12 +24,8 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Headquarters</h3>
-                  <p className="text-muted-foreground mt-1">
-                    123 Innovation Blvd,
-                    <br />
-                    Tech District, CA 90210
-                  </p>
+                  <h3 className="font-semibold text-lg">{t("headquarters")}</h3>
+                  <p className="text-muted-foreground mt-1">{t("address")}</p>
                 </div>
               </CardContent>
             </Card>
@@ -53,11 +37,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Phone</h3>
-                  <p className="text-muted-foreground mt-1">
-                    +1 (555) 000-0000
-                  </p>
+                  <p className="text-muted-foreground mt-1">{t("phone")}</p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Mon-Fri from 8am to 6pm
+                    {t("phoneSchedule")}
                   </p>
                 </div>
               </CardContent>
@@ -70,11 +52,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Email</h3>
-                  <p className="text-muted-foreground mt-1">
-                    hello@proppulse.com
-                  </p>
+                  <p className="text-muted-foreground mt-1">{t("email")}</p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    support@proppulse.com
+                    {t("emailSupport")}
                   </p>
                 </div>
               </CardContent>
