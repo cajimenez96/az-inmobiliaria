@@ -4,7 +4,7 @@ import { getMessages } from "next-intl/server";
 import { getCompanyConfig } from "@/lib/company";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
   return {
     title: company.meta.defaultTitle,
     description: company.meta.defaultDescription,

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Values = async () => {
   const t = await getTranslations("values");
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
   const items = [t("item1"), t("item2"), t("item3"), t("item4")];
 
   return (

@@ -7,7 +7,7 @@ import Mission from "@/components/shared/sections/mission";
 
 export default async function AboutPage() {
   const t = await getTranslations("about");
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
 
   return (
     <div className="flex flex-col min-h-screen">

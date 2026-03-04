@@ -83,7 +83,17 @@
   "dashboard": {
     "agentBrand": "{companyName} Agent",
     "overview": "Overview",
-    "addProperty": "Add Property"
+    "addProperty": "Add Property",
+    "settings": "Web settings",
+    "settingsTitle": "Company information",
+    "settingsDescription": "Edit your company data. Changes apply across the site immediately.",
+    "save": "Save changes",
+    "saved": "Saved.",
+    "identity": "Identity",
+    "meta": "SEO",
+    "contact": "Contact",
+    "social": "Social links",
+    "stats": "Statistics (home)"
   },
   "properties": {
     "title": "Find Your Home",

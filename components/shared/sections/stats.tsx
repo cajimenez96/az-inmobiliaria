@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 const Stats = async () => {
   const t = await getTranslations("stats");
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
   const statItems = [
     { label: t("activeListings"), value: company.stats.listingsCount },
     { label: t("soldProperties"), value: company.stats.soldCount },

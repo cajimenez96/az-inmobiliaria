@@ -4,7 +4,7 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 import Link from "next/link";
 
 const Footer = async () => {
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
   const tFooter = await getTranslations("footer");
 
   return (

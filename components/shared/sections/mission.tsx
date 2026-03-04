@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Mission = async () => {
   const t = await getTranslations("about");
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
   const items = [
     { icon: Trophy, titleKey: "missionAward", descKey: "missionAwardDesc" },
     { icon: Users, titleKey: "missionClient", descKey: "missionClientDesc" },

@@ -83,7 +83,17 @@
   "dashboard": {
     "agentBrand": "Agente {companyName}",
     "overview": "Resumen",
-    "addProperty": "Añadir propiedad"
+    "addProperty": "Añadir propiedad",
+    "settings": "Configuración web",
+    "settingsTitle": "Información de la empresa",
+    "settingsDescription": "Edita los datos de tu empresa. Los cambios se aplican en la web al instante.",
+    "save": "Guardar cambios",
+    "saved": "Guardado.",
+    "identity": "Identidad",
+    "meta": "SEO",
+    "contact": "Contacto",
+    "social": "Redes sociales",
+    "stats": "Estadísticas (inicio)"
   },
   "properties": {
     "title": "Encuentra tu hogar",

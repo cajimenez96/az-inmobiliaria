@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { LayoutDashboard, PlusCircle } from "lucide-react";
+import { LayoutDashboard, PlusCircle, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AgentProfileCard from "@/components/shared/dashboard/agent-profile-card";
 import { auth } from "@/lib/auth";
@@ -20,7 +20,7 @@ export default async function DashboardLayout({
     headers: await headers(),
   });
   const t = await getTranslations("dashboard");
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
 
   if (!session) {
     redirect({ href: "/sign-in", locale: locale as "en" | "es" });
@@ -46,6 +46,11 @@ export default async function DashboardLayout({
           <Link href="/dashboard/add">
             <Button variant="ghost" className="w-full justify-start gap-2">
               <PlusCircle className="h-4 w-4" /> {t("addProperty")}
+            </Button>
+          </Link>
+          <Link href="/dashboard/settings">
+            <Button variant="ghost" className="w-full justify-start gap-2">
+              <Settings className="h-4 w-4" /> {t("settings")}
             </Button>
           </Link>
         </nav>

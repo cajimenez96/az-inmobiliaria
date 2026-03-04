@@ -1,4 +1,5 @@
 import companyJson from "@/config/company.json";
+import prisma from "@/lib/prisma";
 
 export interface CompanyConfig {
   name: string;
@@ -29,14 +30,39 @@ export interface CompanyConfig {
   };
 }
 
-let cached: CompanyConfig | null = null;
+const defaultConfig = companyJson as CompanyConfig;
 
 /**
- * Returns the company configuration from config/company.json.
- * Cached for the process lifetime.
+ * Returns the company configuration. Reads from the database first (edits from
+ * dashboard); if no row exists, falls back to config/company.json.
  */
-export function getCompanyConfig(): CompanyConfig {
-  if (cached) return cached;
-  cached = companyJson as CompanyConfig;
-  return cached;
+export async function getCompanyConfig(): Promise<CompanyConfig> {
+  const row = await prisma.companyConfig.findFirst({
+    orderBy: { updatedAt: "desc" },
+  });
+  if (row && row.data && typeof row.data === "object") {
+    return row.data as unknown as CompanyConfig;
+  }
+  return defaultConfig;
 }
+
+/**
+ * Saves the company configuration to the database. Used by the dashboard
+ * settings page; changes are reflected on the next request.
+ */
+export async function saveCompanyConfig(data: CompanyConfig): Promise<void> {
+  const existing = await prisma.companyConfig.findFirst();
+  const payload = data as unknown as Record<string, unknown>;
+  if (existing) {
+    await prisma.companyConfig.update({
+      where: { id: existing.id },
+      data: { data: payload, updatedAt: new Date() },
+    });
+  } else {
+    await prisma.companyConfig.create({
+      data: { data: payload },
+    });
+  }
+}
+
+export { defaultConfig };

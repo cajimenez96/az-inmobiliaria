@@ -11,7 +11,7 @@ const montserrat = Montserrat({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
   const template = company.meta.titleTemplate.replace(
     "{companyName}",
     company.name,

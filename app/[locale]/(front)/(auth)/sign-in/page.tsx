@@ -20,7 +20,7 @@ export default async function SignInPage({
   if (session) redirect({ href: "/", locale: locale as "en" | "es" });
 
   const t = await getTranslations("auth");
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
 
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">

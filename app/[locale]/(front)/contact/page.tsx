@@ -6,7 +6,7 @@ import ContactForm from "@/components/shared/forms/contact-form";
 
 export default async function ContactPage() {
   const t = await getTranslations("contact");
-  const company = getCompanyConfig();
+  const company = await getCompanyConfig();
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 md:py-20">
