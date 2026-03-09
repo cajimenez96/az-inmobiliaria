@@ -7,6 +7,9 @@ import { Separator } from "@/components/ui/separator";
 import { PropertyType } from "@/lib/generated/prisma/enums";
 import PropertyListCard from "./property-list-card";
 import PropertyCard from "./property-card";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 
 export interface Property {
   id: string;
@@ -30,16 +33,14 @@ export default function PropertyFeed({
   properties: Property[];
 }) {
   const [isGridView, setIsGridView] = useState(true);
+  // const t = getTranslations("properties");
+  const t = useTranslations("properties");
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <p className="text-sm text-muted-foreground">
-          Showing{" "}
-          <span className="font-medium text-foreground">
-            {properties.length}
-          </span>{" "}
-          results
+          {t("feed.showing", { count: properties.length })}
         </p>
 
         <div className="flex items-center gap-4">

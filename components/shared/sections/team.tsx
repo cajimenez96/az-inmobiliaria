@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 const TEAM_MEMBERS = [
@@ -34,16 +35,17 @@ const TEAM_MEMBERS = [
   },
 ];
 
-const Team = () => {
+const Team = async () => {
+  const t = await getTranslations("about");
   return (
     <section className="py-20 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold tracking-tight mb-4">
-            Meet the Board
+            {t("teamTitle")}
           </h2>
           <p className="text-muted-foreground">
-            The industry veterans and tech innovators behind the platform.
+           {t("teamSubtitle")}
           </p>
         </div>
 

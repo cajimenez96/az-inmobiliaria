@@ -10,61 +10,71 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslations } from "next-intl";
 
 const ContactForm = () => {
+  const t = useTranslations("contact.form");
   return (
     <Card className="lg:col-span-2">
       <CardContent className="p-6 sm:p-8">
         <form className="grid gap-6">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
-              <Label htmlFor="first-name">First name</Label>
-              <Input id="first-name" placeholder="Max" />
+              <Label htmlFor="first-name">{t("firstName")}</Label>
+              <Input id="first-name" placeholder={t("firstNamePlaceholder")} />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="last-name">Last name</Label>
-              <Input id="last-name" placeholder="Robinson" />
+              <Label htmlFor="last-name">{t("lastName")}</Label>
+              <Input id="last-name" placeholder={t("lastNamePlaceholder")} />
             </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="max@example.com" />
+              <Label htmlFor="email">{t("email")}</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder={t("emailPlaceholder")}
+              />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="phone">Phone number</Label>
-              <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+              <Label htmlFor="phone">{t("phone")}</Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder={t("phonePlaceholder")}
+              />
             </div>
           </div>
 
           <div className="grid gap-2">
-            <Label htmlFor="inquiry-type">I am interested in</Label>
+            <Label htmlFor="inquiry-type">{t("interestedIn")}</Label>
             <Select>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a topic" />
+                <SelectValue placeholder={t("selectTopic")} />
               </SelectTrigger>
               <SelectContent className="w-full">
-                <SelectItem value="buy">Buying a Property</SelectItem>
-                <SelectItem value="rent">Renting a Property</SelectItem>
-                <SelectItem value="sell">Selling my Home</SelectItem>
-                <SelectItem value="agent">Joining as an Agent</SelectItem>
-                <SelectItem value="other">Other Inquiry</SelectItem>
+                <SelectItem value="buy">{t("topics.buy")}</SelectItem>
+                <SelectItem value="rent">{t("topics.rent")}</SelectItem>
+                <SelectItem value="sell">{t("topics.sell")}</SelectItem>
+                <SelectItem value="agent">{t("topics.agent")}</SelectItem>
+                <SelectItem value="other">{t("topics.other")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="grid gap-2">
-            <Label htmlFor="message">Message</Label>
+            <Label htmlFor="message">{t("message")}</Label>
             <Textarea
               id="message"
-              placeholder="Tell us more about your needs..."
+              placeholder={t("messagePlaceholder")}
               className="min-h-[150px]"
             />
           </div>
 
           <Button type="submit" size="lg" className="w-full sm:w-auto">
-            Send Message
+            {t("submit")}
           </Button>
         </form>
       </CardContent>

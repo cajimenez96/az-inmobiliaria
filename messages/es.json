@@ -52,14 +52,38 @@
     "missionNetwork": "Amplia red",
     "missionNetworkDesc": "Anuncios en más de 50 ciudades.",
     "missionTransparency": "Transparencia",
-    "missionTransparencyDesc": "Sin comisiones ocultas, nunca."
+    "missionTransparencyDesc": "Sin comisiones ocultas, nunca.",
+    "teamTitle": "Conoce al equipo directivo",
+    "teamSubtitle": "Los veteranos de la industria y los innovadores tecnológicos detrás de la plataforma."
   },
   "contact": {
     "title": "Contáctanos",
     "subtitle": "¿Tienes una pregunta sobre una propiedad o quieres anunciar la tuya? Nuestro equipo está listo para ayudarte 24/7.",
     "headquarters": "Sede central",
     "phoneLabel": "Teléfono",
-    "emailLabel": "Correo electrónico"
+    "emailLabel": "Correo electrónico",
+    "form": {
+      "firstName": "Nombre",
+      "firstNamePlaceholder": "Max",
+      "lastName": "Apellido",
+      "lastNamePlaceholder": "Robinson",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "max@ejemplo.com",
+      "phone": "Número de teléfono",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "interestedIn": "Estoy interesado en",
+      "selectTopic": "Seleccionar un tema",
+      "topics": {
+        "buy": "Comprar una propiedad",
+        "rent": "Alquilar una propiedad",
+        "sell": "Vender mi casa",
+        "agent": "Unirme como agente",
+        "other": "Otra consulta"
+      },
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos más sobre tus necesidades...",
+      "submit": "Enviar mensaje"
+    }
   },
   "auth": {
     "signIn": {
@@ -98,7 +122,33 @@
   "properties": {
     "title": "Encuentra tu hogar",
     "browsingCount": "Viendo {count} propiedades en tu red.",
-    "showFilters": "Mostrar filtros"
+    "showFilters": "Mostrar filtros",
+    "filters": {
+      "title": "Filtros",
+      "reset": "Restablecer",
+      "searchPlaceholder": "Buscar ubicación...",
+      "listingStatus": {
+        "title": "Estado del anuncio",
+        "placeholder": "Seleccionar estado",
+        "all": "Compra y alquiler",
+        "buy": "En venta",
+        "rent": "En alquiler"
+      },
+      "bedrooms": {
+        "title": "Habitaciones",
+        "any": "Todas"
+      },
+      "amenities": {
+        "title": "Comodidades",
+        "pool": "Piscina",
+        "garage": "Garaje",
+        "airConditioning": "Aire acondicionado",
+        "gym": "Gimnasio"
+      }
+    },
+    "feed": {
+      "showing": "Mostrando {count} resultados"
+    }
   },
   "footer": {
     "rights": "Todos los derechos reservados.",

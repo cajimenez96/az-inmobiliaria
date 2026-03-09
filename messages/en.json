@@ -52,14 +52,38 @@
     "missionNetwork": "Wide Network",
     "missionNetworkDesc": "Listings across 50+ major cities.",
     "missionTransparency": "Transparency",
-    "missionTransparencyDesc": "No hidden fees, ever."
+    "missionTransparencyDesc": "No hidden fees, ever.",
+    "teamTitle": "Meet the Board",
+    "teamSubtitle": "The industry veterans and tech innovators behind the platform."
   },
   "contact": {
     "title": "Get in Touch",
     "subtitle": "Have a question about a property or want to list your home? Our team is ready to help you 24/7.",
     "headquarters": "Headquarters",
     "phoneLabel": "Phone",
-    "emailLabel": "Email"
+    "emailLabel": "Email",
+    "form": {
+      "firstName": "First name",
+      "firstNamePlaceholder": "Max",
+      "lastName": "Last name",
+      "lastNamePlaceholder": "Robinson",
+      "email": "Email",
+      "emailPlaceholder": "max@example.com",
+      "phone": "Phone number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "interestedIn": "I am interested in",
+      "selectTopic": "Select a topic",
+      "topics": {
+        "buy": "Buying a Property",
+        "rent": "Renting a Property",
+        "sell": "Selling my Home",
+        "agent": "Joining as an Agent",
+        "other": "Other Inquiry"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us more about your needs...",
+      "submit": "Send Message"
+    }
   },
   "auth": {
     "signIn": {
@@ -98,18 +122,44 @@
   "properties": {
     "title": "Find Your Home",
     "browsingCount": "Browsing {count} properties in your network.",
-    "showFilters": "Show Filters"
-  },
-  "footer": {
-    "rights": "All rights reserved.",
-    "ariaTwitter": "Twitter",
-    "ariaInstagram": "Instagram",
-    "ariaFacebook": "Facebook"
-  },
-  "common": {
-    "search": "Search",
-    "viewAll": "View All",
-    "loading": "Loading...",
-    "error": "Something went wrong."
+    "showFilters": "Show Filters",
+    "filters": {
+      "title": "Filters",
+      "reset": "Reset",
+      "searchPlaceholder": "Search location...",
+      "listingStatus": {
+        "title": "Listing Status",
+        "placeholder": "Select status",
+        "all": "Buy & Rent",
+        "buy": "For Sale",
+        "rent": "For Rent"
+      },
+      "bedrooms": {
+        "title": "Bedrooms",
+        "any": "Any"
+      },
+      "amenities": {
+        "title": "Amenities",
+        "pool": "Pool",
+        "garage": "Garage",
+        "airConditioning": "Air Conditioning",
+        "gym": "Gym"
+      }
+    },
+    "feed": {
+      "showing": "Showing {count} results"
+    },
+    "footer": {
+      "rights": "All rights reserved.",
+      "ariaTwitter": "Twitter",
+      "ariaInstagram": "Instagram",
+      "ariaFacebook": "Facebook"
+    },
+    "common": {
+      "search": "Search",
+      "viewAll": "View All",
+      "loading": "Loading...",
+      "error": "Something went wrong."
+    }
   }
 }
