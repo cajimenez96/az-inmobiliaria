@@ -11,6 +11,7 @@ import { MapPin, Bed, Bath, Square } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { formatType } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 type PropertyCardProps = {
   image: string;
@@ -35,6 +36,7 @@ const PropertyCard = ({
   baths,
   sqft,
 }: PropertyCardProps) => {
+  const t = useTranslations("listing");
   return (
     <Card className="group overflow-hidden transition-all hover:shadow-lg p-0 pb-5">
       <div className="relative aspect-[4/3] overflow-hidden">
@@ -62,21 +64,21 @@ const PropertyCard = ({
         <div className="flex justify-between text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
             <Bed className="h-4 w-4" />
-            <span className="font-medium text-foreground">{beds}</span> Beds
+            <span className="font-medium text-foreground">{beds}</span>{t("beds")}
           </div>
           <div className="flex items-center gap-1">
             <Bath className="h-4 w-4" />
-            <span className="font-medium text-foreground">{baths}</span> Baths
+            <span className="font-medium text-foreground">{baths}</span> {t("baths")}
           </div>
           <div className="flex items-center gap-1">
             <Square className="h-4 w-4" />
-            <span className="font-medium text-foreground">{sqft}</span> SqFt
+            <span className="font-medium text-foreground">{sqft}</span> {t("sqft")}
           </div>
         </div>
       </CardContent>
       <CardFooter>
         <Button className="w-full" variant="secondary" asChild>
-          <Link href={`/listings/${slug}`}>View Details</Link>
+          <Link href={`/listings/${slug}`}>{t("viewDetails")}</Link>
         </Button>
       </CardFooter>
     </Card>

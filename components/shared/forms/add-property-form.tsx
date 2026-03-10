@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -59,7 +60,8 @@ interface PropertyFormProps {
 export default function AddPropertyForm({ initialData }: PropertyFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
+  const t = useTranslations("dashboard.propertyForm");
+  const tAmenities = useTranslations("dashboard.propertyForm.amenitiesList");
   const defaultValues = initialData
     ? {
         ...initialData,
@@ -117,12 +119,18 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
     }
   };
 
+  const fieldLabels = {
+    beds: t("beds"),
+    baths: t("baths"),
+    sqft: t("sqft"),
+  } as const;
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <Card>
           <CardHeader>
-            <CardTitle>Basic Information</CardTitle>
+            <CardTitle>{t("basicInfo")}</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-6">
             <FormField
@@ -130,9 +138,12 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Property Title</FormLabel>
+                  <FormLabel>{t("propertyTitle")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Modern Sunset Villa" {...field} />
+                    <Input
+                      placeholder={t("propertyTitlePlaceholder")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -145,19 +156,19 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
                 name="type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Property Type</FormLabel>
+                    <FormLabel>{t("propertyType")}</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select type" />
+                          <SelectValue placeholder={t("selectType")} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent className="w-full">
-                        <SelectItem value="FOR_SALE">For Sale</SelectItem>
-                        <SelectItem value="FOR_RENT">For Rent</SelectItem>
+                        <SelectItem value="FOR_SALE">{t("forSale")}</SelectItem>
+                        <SelectItem value="FOR_RENT">{t("forRent")}</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -170,9 +181,9 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
                 name="price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Price</FormLabel>
+                    <FormLabel>{t("price")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. $1,250,000" {...field} />
+                      <Input placeholder={t("pricePlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -185,12 +196,9 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
               name="location"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Location</FormLabel>
+                  <FormLabel>{t("location")}</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="e.g. 123 Palm Street, Miami"
-                      {...field}
-                    />
+                    <Input placeholder={t("locationPlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -201,7 +209,7 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Property Details</CardTitle>
+            <CardTitle>{t("propertyDetails")}</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-6">
             <div className="grid grid-cols-3 gap-6">
@@ -212,7 +220,9 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
                   name={name}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="capitalize">{name}</FormLabel>
+                      <FormLabel className="capitalize">
+                        {fieldLabels[name]}
+                      </FormLabel>
                       <FormControl>
                         <Input type="number" {...field} />
                       </FormControl>
@@ -228,9 +238,12 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{t("description")}</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Property details..." {...field} />
+                    <Textarea
+                      placeholder={t("descriptionPlaceholder")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -242,7 +255,7 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
               name="amenities"
               render={() => (
                 <FormItem>
-                  <FormLabel>Amenities</FormLabel>
+                  <FormLabel>{t("amenities")}</FormLabel>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
                     {AMENITIES_LIST.map((item) => (
                       <FormField
@@ -263,14 +276,14 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
                                       ? field.onChange([...field.value, item])
                                       : field.onChange(
                                           field.value?.filter(
-                                            (value: string) => value !== item
-                                          )
+                                            (value: string) => value !== item,
+                                          ),
                                         );
                                   }}
                                 />
                               </FormControl>
                               <FormLabel className="font-normal cursor-pointer">
-                                {item}
+                                {tAmenities(item)}
                               </FormLabel>
                             </FormItem>
                           );
@@ -287,7 +300,7 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Media & Settings</CardTitle>
+            <CardTitle>{t("mediaSettings")}</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-6">
             <FormField
@@ -295,7 +308,7 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
               name="image"
               render={({ field: { value, onChange, ...fieldProps } }) => (
                 <FormItem>
-                  <FormLabel>Main Image</FormLabel>
+                  <FormLabel>{t("mainImage")}</FormLabel>
                   <FormControl>
                     <Input
                       {...fieldProps}
@@ -306,9 +319,7 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
                       }}
                     />
                   </FormControl>
-                  <FormDescription>
-                    Max 5MB. Formats: JPG, PNG, WEBP.
-                  </FormDescription>
+                  <FormDescription>{t("mainImageDescription")}</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -322,9 +333,9 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
                 name="tag"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Tag (Optional)</FormLabel>
+                    <FormLabel>{t("tag")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. New, Featured" {...field} />
+                      <Input placeholder={t("tagPlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -336,21 +347,27 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
                 name="status"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Status</FormLabel>
+                    <FormLabel>{t("status")}</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select status" />
+                          <SelectValue placeholder={t("selectStatus")} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent className="w-full">
-                        <SelectItem value="ACTIVE">Active</SelectItem>
-                        <SelectItem value="INACTIVE">Inactive</SelectItem>
-                        <SelectItem value="SOLD">Sold</SelectItem>
-                        <SelectItem value="RENTED">Rented</SelectItem>
+                        <SelectItem value="ACTIVE">
+                          {t("statusActive")}
+                        </SelectItem>
+                        <SelectItem value="INACTIVE">
+                          {t("statusInactive")}
+                        </SelectItem>
+                        <SelectItem value="SOLD">{t("statusSold")}</SelectItem>
+                        <SelectItem value="RENTED">
+                          {t("statusRented")}
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -363,13 +380,13 @@ export default function AddPropertyForm({ initialData }: PropertyFormProps) {
 
         <div className="flex justify-end gap-4">
           <Button type="button" variant="outline" onClick={() => router.back()}>
-            Discard
+            {t("discard")}
           </Button>
           <Button type="submit" className="min-w-[150px]" disabled={isLoading}>
             {isLoading ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             ) : null}
-            {initialData ? "Save Changes" : "Create Property"}
+            {initialData ? t("saveChanges") : t("createProperty")}
           </Button>
         </div>
       </form>

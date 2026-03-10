@@ -14,8 +14,11 @@ interface CompanySettingsFormProps {
   initial: CompanyConfig;
 }
 
-export default function CompanySettingsForm({ initial }: CompanySettingsFormProps) {
+export default function CompanySettingsForm({
+  initial,
+}: CompanySettingsFormProps) {
   const t = useTranslations("dashboard");
+  const f = useTranslations("dashboard.form");
   const [isPending, startTransition] = useTransition();
   const [form, setForm] = useState(initial);
 
@@ -55,7 +58,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">{f("name")}</Label>
             <Input
               id="name"
               value={form.name}
@@ -63,7 +66,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="tagline">Tagline</Label>
+            <Label htmlFor="tagline">{f("tagline")}</Label>
             <Input
               id="tagline"
               value={form.tagline}
@@ -71,7 +74,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="since">Since</Label>
+            <Label htmlFor="since">{f("since")}</Label>
             <Input
               id="since"
               value={form.since}
@@ -79,7 +82,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="legalName">Legal name</Label>
+            <Label htmlFor="legalName">{f("legalName")}</Label>
             <Input
               id="legalName"
               value={form.legalName}
@@ -95,7 +98,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="defaultTitle">Default title</Label>
+            <Label htmlFor="defaultTitle">{f("defaultTitle")}</Label>
             <Input
               id="defaultTitle"
               value={form.meta.defaultTitle}
@@ -103,7 +106,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="titleTemplate">Title template (use {"{companyName}"})</Label>
+            <Label htmlFor="titleTemplate">{f("titleTemplate")}</Label>
             <Input
               id="titleTemplate"
               value={form.meta.titleTemplate}
@@ -111,11 +114,15 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="defaultDescription">Default description</Label>
+            <Label htmlFor="defaultDescription">
+              {f("defaultDescription")}
+            </Label>
             <Input
               id="defaultDescription"
               value={form.meta.defaultDescription}
-              onChange={(e) => updateMeta({ defaultDescription: e.target.value })}
+              onChange={(e) =>
+                updateMeta({ defaultDescription: e.target.value })
+              }
             />
           </div>
         </CardContent>
@@ -127,7 +134,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="address">Address</Label>
+            <Label htmlFor="address">{f("address")}</Label>
             <Input
               id="address"
               value={form.contact.address}
@@ -135,7 +142,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="phone">{f("phone")}</Label>
             <Input
               id="phone"
               value={form.contact.phone}
@@ -143,7 +150,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="phoneSchedule">Phone schedule</Label>
+            <Label htmlFor="phoneSchedule">{f("phoneSchedule")}</Label>
             <Input
               id="phoneSchedule"
               value={form.contact.phoneSchedule}
@@ -151,7 +158,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{f("email")}</Label>
             <Input
               id="email"
               type="email"
@@ -160,7 +167,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="emailSupport">Support email</Label>
+            <Label htmlFor="emailSupport">{f("emailSupport")}</Label>
             <Input
               id="emailSupport"
               type="email"
@@ -177,7 +184,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="twitterUrl">Twitter URL</Label>
+            <Label htmlFor="twitterUrl">{f("twitterUrl")}</Label>
             <Input
               id="twitterUrl"
               value={form.social.twitterUrl}
@@ -185,7 +192,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="instagramUrl">Instagram URL</Label>
+            <Label htmlFor="instagramUrl">{f("instagramUrl")}</Label>
             <Input
               id="instagramUrl"
               value={form.social.instagramUrl}
@@ -193,7 +200,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="facebookUrl">Facebook URL</Label>
+            <Label htmlFor="facebookUrl">{f("facebookUrl")}</Label>
             <Input
               id="facebookUrl"
               value={form.social.facebookUrl}
@@ -209,7 +216,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="listingsCount">Listings count (e.g. 2,500+)</Label>
+            <Label htmlFor="listingsCount">{f("listingsCount")}</Label>
             <Input
               id="listingsCount"
               value={form.stats.listingsCount}
@@ -217,7 +224,7 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="soldCount">Sold count</Label>
+            <Label htmlFor="soldCount">{f("soldCount")}</Label>
             <Input
               id="soldCount"
               value={form.stats.soldCount}
@@ -225,11 +232,15 @@ export default function CompanySettingsForm({ initial }: CompanySettingsFormProp
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="satisfactionPercent">Satisfaction %</Label>
+            <Label htmlFor="satisfactionPercent">
+              {f("satisfactionPercent")}
+            </Label>
             <Input
               id="satisfactionPercent"
               value={form.stats.satisfactionPercent}
-              onChange={(e) => updateStats({ satisfactionPercent: e.target.value })}
+              onChange={(e) =>
+                updateStats({ satisfactionPercent: e.target.value })
+              }
             />
           </div>
         </CardContent>

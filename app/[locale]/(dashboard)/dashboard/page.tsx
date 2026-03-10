@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { Plus, ArrowUpRight, DollarSign, Home, Users } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,6 +13,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import StatsProperties from "@/components/shared/dashboard/stats-properties";
+import { getTranslations } from "next-intl/server";
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -21,16 +22,18 @@ export default async function DashboardPage() {
 
   if (!session) redirect("/");
 
+  const t = await getTranslations("dashboard");
+
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-          <p className="text-muted-foreground">Welcome back!</p>
+          <p className="text-muted-foreground">{t("welcomeBack")}</p>
         </div>
         <Button asChild>
           <Link href="/dashboard/add">
-            <Plus className="mr-2 h-4 w-4" /> Add Property
+            <Plus className="mr-2 h-4 w-4" /> {t("addProperty")}
           </Link>
         </Button>
       </div>
@@ -39,10 +42,8 @@ export default async function DashboardPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Recent Properties</CardTitle>
-          <CardDescription>
-            Manage your latest real estate listings.
-          </CardDescription>
+          <CardTitle>{t("recentProperties")}</CardTitle>
+          <CardDescription>{t("recentPropertiesDescription")}</CardDescription>
         </CardHeader>
         <CardContent>
           <PropertiesTableWrapper />

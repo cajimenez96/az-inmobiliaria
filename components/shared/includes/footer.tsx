@@ -12,18 +12,29 @@ const Footer = async () => {
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6 lg:px-8">
         <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
           © {new Date().getFullYear()}{" "}
-          <span className="font-semibold text-foreground">{company.legalName}</span>.{" "}
-          {tFooter("rights")}
+          <span className="font-semibold text-foreground">
+            {company.legalName}
+          </span>
+          . {tFooter("rights")}
         </p>
 
         <div className="flex items-center gap-4 text-muted-foreground">
-          <Link href={company.social.twitterUrl} aria-label={tFooter("ariaTwitter")}>
+          <Link
+            href={company.social.twitterUrl}
+            aria-label={tFooter("ariaTwitter")}
+          >
             <Twitter className="h-5 w-5 hover:text-foreground transition-colors" />
           </Link>
-          <Link href={company.social.instagramUrl} aria-label={tFooter("ariaInstagram")}>
+          <Link
+            href={company.social.instagramUrl}
+            aria-label={tFooter("ariaInstagram")}
+          >
             <Instagram className="h-5 w-5 hover:text-foreground transition-colors" />
           </Link>
-          <Link href={company.social.facebookUrl} aria-label={tFooter("ariaFacebook")}>
+          <Link
+            href={company.social.facebookUrl}
+            aria-label={tFooter("ariaFacebook")}
+          >
             <Facebook className="h-5 w-5 hover:text-foreground transition-colors" />
           </Link>
         </div>

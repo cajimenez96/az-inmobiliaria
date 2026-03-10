@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { formatType, getUserInitials } from "@/lib/utils";
 import { getPropertyDetails } from "@/lib/actions/property.actions";
+import { getTranslations } from "next-intl/server";
 
 interface PropertyWithUser {
   id: string;
@@ -50,6 +51,7 @@ export default async function PropertyDetailsPage({
 }) {
   const { slug } = await params;
   const property = (await getPropertyDetails(slug)) as PropertyWithUser | null;
+  const t = await getTranslations("listing");
 
   if (!property) notFound();
 
@@ -63,11 +65,12 @@ export default async function PropertyDetailsPage({
             href="/properties"
             className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" /> Back to Listings
+            <ArrowLeft className="mr-2 h-4 w-4" /> {t("backToListings")}
           </Link>
           <div className="flex gap-2">
             <Button variant="outline" size="sm">
-              <Heart className="mr-2 h-4 w-4" /> Save
+              <Heart className="mr-2 h-4 w-4" />
+              {t("save")}
             </Button>
           </div>
         </div>
@@ -108,26 +111,28 @@ export default async function PropertyDetailsPage({
           <div className="lg:col-span-2 space-y-10">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-4 border rounded-xl p-6 bg-white shadow-sm dark:bg-slate-900">
               <div className="col-span-3 md:col-span-1">
-                <div className="text-sm text-muted-foreground">Price</div>
+                <div className="text-sm text-muted-foreground">
+                  {t("price")}
+                </div>
                 <div className="text-2xl font-bold text-primary">
                   {property.price}
                 </div>
               </div>
               <div className="flex flex-col border-l pl-4 md:pl-8">
                 <span className="flex items-center text-muted-foreground text-sm mb-1">
-                  <Bed className="w-4 h-4 mr-2" /> Beds
+                  <Bed className="w-4 h-4 mr-2" /> {t("beds")}
                 </span>
                 <span className="font-bold text-xl">{property.beds}</span>
               </div>
               <div className="flex flex-col border-l pl-4 md:pl-8">
                 <span className="flex items-center text-muted-foreground text-sm mb-1">
-                  <Bath className="w-4 h-4 mr-2" /> Baths
+                  <Bath className="w-4 h-4 mr-2" /> {t("baths")}
                 </span>
                 <span className="font-bold text-xl">{property.baths}</span>
               </div>
               <div className="flex flex-col border-l pl-4 md:pl-8">
                 <span className="flex items-center text-muted-foreground text-sm mb-1">
-                  <Square className="w-4 h-4 mr-2" /> SqFt
+                  <Square className="w-4 h-4 mr-2" /> {t("sqft")}
                 </span>
                 <span className="font-bold text-xl">
                   {property.sqft.toLocaleString()}
@@ -136,7 +141,7 @@ export default async function PropertyDetailsPage({
             </div>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">About this home</h2>
+              <h2 className="text-2xl font-semibold mb-4">{t("aboutHome")}</h2>
               <div className="prose prose-slate max-w-none dark:prose-invert text-muted-foreground leading-relaxed">
                 {property.content.split("\n").map((paragraph, i) => (
                   <p key={i} className="mb-4">
@@ -149,9 +154,7 @@ export default async function PropertyDetailsPage({
             <Separator />
 
             <section>
-              <h2 className="text-2xl font-semibold mb-6">
-                Amenities & Features
-              </h2>
+              <h2 className="text-2xl font-semibold mb-6">{t("amenities")}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
                 {property.amenities.map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -167,12 +170,12 @@ export default async function PropertyDetailsPage({
             <Separator />
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Location</h2>
+              <h2 className="text-2xl font-semibold mb-4">{t("location")}</h2>
               <div className="bg-slate-200 h-[300px] rounded-xl overflow-hidden">
                 <iframe
                   title={`Map of ${property.location}`}
                   src={`https://www.google.com/maps?q=${encodeURIComponent(
-                    property.location
+                    property.location,
                   )}&output=embed`}
                   width="100%"
                   height="100%"
@@ -197,7 +200,7 @@ export default async function PropertyDetailsPage({
                     </Avatar>
                     <div>
                       <p className="text-sm text-muted-foreground">
-                        Listing Agent
+                        {t("listingAgent")}
                       </p>
                       <h3 className="text-lg font-bold leading-none">
                         {property.user.name}
@@ -207,20 +210,22 @@ export default async function PropertyDetailsPage({
                 </div>
 
                 <CardContent className="p-6 pt-0">
-                  <h4 className="font-semibold mb-4">
-                    Interested in this property?
-                  </h4>
+                  <h4 className="font-semibold mb-4">{t("interested")}</h4>
 
                   <form className="space-y-4">
                     <div className="grid gap-2">
-                      <Input name="name" placeholder="Your Name" required />
+                      <Input
+                        name="name"
+                        placeholder={t("namePlaceholder")}
+                        required
+                      />
                     </div>
 
                     <div className="grid gap-2">
                       <Input
                         name="email"
                         type="email"
-                        placeholder="Email Address"
+                        placeholder={t("emailPlaceholder")}
                         required
                       />
                     </div>
@@ -229,18 +234,18 @@ export default async function PropertyDetailsPage({
                       <Input
                         name="phone"
                         type="tel"
-                        placeholder="Phone Number"
+                        placeholder={t("phonePlaceholder")}
                       />
                     </div>
 
                     <div className="grid gap-2">
                       <Textarea
                         name="message"
-                        defaultValue={`Hi ${
-                          property.user.name.split(" ")[0]
-                        }, I am interested in ${property.title} at ${
-                          property.location
-                        }. Please send me more details.`}
+                        defaultValue={t("defaultMessage", {
+                          agentFirstName: property.user.name.split(" ")[0],
+                          propertyTitle: property.title,
+                          propertyLocation: property.location,
+                        })}
                         className="h-32 resize-none"
                       />
                     </div>
@@ -250,7 +255,7 @@ export default async function PropertyDetailsPage({
                       size="lg"
                       className="w-full font-bold"
                     >
-                      Send Message
+                      {t("sendMessage")}
                     </Button>
                   </form>
                 </CardContent>

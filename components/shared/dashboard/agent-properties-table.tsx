@@ -25,7 +25,7 @@ import { formatType } from "@/lib/utils";
 import { deleteProperty } from "@/lib/actions/property.actions";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
-
+import { useTranslations } from "next-intl";
 interface AgentProperty {
   id: string;
   title: string;
@@ -40,18 +40,32 @@ interface AgentProperty {
 
 export function AgentPropertiesTable({ data }: { data: AgentProperty[] }) {
   const { data: session } = authClient.useSession();
+  const t = useTranslations("dashboard.table");
+  // Status map
+  const statusMap: Record<Status, string> = {
+    ACTIVE: t("statusActive"),
+    INACTIVE: t("statusInactive"),
+    SOLD: t("statusSold"),
+    RENTED: t("statusRented"),
+  };
+
+  // Type map
+  const typeMap: Record<PropertyType, string> = {
+    FOR_SALE: t("typeForSale"),
+    FOR_RENT: t("typeForRent"),
+  };
 
   return (
     <div className="rounded-md border bg-white dark:bg-slate-900">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[80px]">Image</TableHead>
-            <TableHead>Title</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Type</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
+            <TableHead className="w-[80px]">{t("image")}</TableHead>
+            <TableHead>{t("title")}</TableHead>
+            <TableHead>{t("status")}</TableHead>
+            <TableHead>{t("type")}</TableHead>
+            <TableHead>{t("price")}</TableHead>
+            <TableHead className="text-right">{t("actions")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -79,11 +93,11 @@ export function AgentPropertiesTable({ data }: { data: AgentProperty[] }) {
                     property.status === "ACTIVE" ? "default" : "secondary"
                   }
                 >
-                  {property.status}
+                  {statusMap[property.status]}
                 </Badge>
               </TableCell>
               <TableCell>
-                <span className="capitalize">{formatType(property.type)}</span>
+                <span className="capitalize">{typeMap[property.type]}</span>
               </TableCell>
               <TableCell>{property.price}</TableCell>
               <TableCell className="text-right">
@@ -94,42 +108,39 @@ export function AgentPropertiesTable({ data }: { data: AgentProperty[] }) {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                    <DropdownMenuLabel>{t("actionsLabel")}</DropdownMenuLabel>
                     <DropdownMenuItem asChild>
                       <Link href={`/listings/${property.slug}`}>
-                        <Eye className="mr-2 h-4 w-4" /> View Live
+                        <Eye className="mr-2 h-4 w-4" /> {t("viewLive")}
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href={`/dashboard/edit/${property.id}`}>
-                        <Edit className="mr-2 h-4 w-4" /> Edit
+                        <Edit className="mr-2 h-4 w-4" />
+                        {t("edit")}
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="text-red-600"
                       onClick={async () => {
                         if (!session?.user) return;
-                        if (
-                          confirm(
-                            "Are you sure you want to delete this property?"
-                          )
-                        ) {
+                        if (confirm(t("deleteConfirm"))) {
                           try {
                             await deleteProperty(
                               property.id,
-                              session?.user.id as string
+                              session?.user.id as string,
                             );
                           } catch (error) {
                             toast.error(
                               error instanceof Error
                                 ? error.message
-                                : String(error)
+                                : String(error),
                             );
                           }
                         }
                       }}
                     >
-                      <Trash className="mr-2 h-4 w-4" /> Delete
+                      <Trash className="mr-2 h-4 w-4" /> {t("delete")}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

@@ -1,5 +1,6 @@
 import AddPropertyForm from "@/components/shared/forms/add-property-form";
 import { auth } from "@/lib/auth";
+import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -9,11 +10,13 @@ export default async function AddPropertyPage() {
   });
 
   if (!session) redirect("/");
-
+  const t = await getTranslations("dashboard");
   return (
     <div className="max-w-4xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-bold tracking-tight">Add New Property</h2>
+        <h2 className="text-3xl font-bold tracking-tight">
+          {t("addProperty")}
+        </h2>
       </div>
       <AddPropertyForm />
     </div>
