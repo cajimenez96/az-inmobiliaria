@@ -6,9 +6,15 @@ import { authClient } from "@/lib/auth-client";
 import { getUserInitials } from "@/lib/utils";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import { LogOut } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 const AgentProfileCard = () => {
   const { data: session } = authClient.useSession();
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
+  const t = useTranslations("auth");
+
   return (
     <div className="border-t p-4">
       <div className="flex items-center gap-3 mb-4 px-2">
@@ -27,13 +33,13 @@ const AgentProfileCard = () => {
           await authClient.signOut({
             fetchOptions: {
               onSuccess: () => {
-                window.location.href = "/sign-in";
+                window.location.href = `/${locale}/sign-in`;
               },
             },
           });
         }}
       >
-        <LogOut className="h-4 w-4" /> Sign Out
+        <LogOut className="h-4 w-4" /> {t("signOut")}
       </Button>
     </div>
   );

@@ -78,6 +78,14 @@ model Verification {
   @@map("verification")
 }
 
+model CompanyConfig {
+  id        String   @id @default(cuid())
+  data      Json
+  updatedAt DateTime @updatedAt
+
+  @@map("company_config")
+}
+
 model Property {
   id          String      @id @default(cuid())
   title       String

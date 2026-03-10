@@ -17,13 +17,15 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useDebounce } from "@/hooks/use-debounce";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/url";
+import { useTranslations } from "next-intl";
 
 export default function PropertyFilters() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslations("properties");
 
   const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("query") || ""
+    searchParams.get("query") || "",
   );
   const debouncedQuery = useDebounce(searchQuery, 500);
 
@@ -75,27 +77,27 @@ export default function PropertyFilters() {
 
     updateFilter(
       "amenities",
-      newAmenities.length > 0 ? newAmenities.join(",") : null
+      newAmenities.length > 0 ? newAmenities.join(",") : null,
     );
   };
 
   return (
     <div className="sticky top-24 space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-lg">Filters</h3>
+        <h3 className="font-semibold text-lg">{t("filters.title")}</h3>
         <Button
           variant="link"
           className="px-0 text-muted-foreground h-auto"
           onClick={() => router.push("/properties")}
         >
-          Reset
+          {t("filters.reset")}
         </Button>
       </div>
 
       <div className="relative">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
-          placeholder="Search location..."
+          placeholder={t("filters.searchPlaceholder")}
           className="pl-9"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -105,18 +107,24 @@ export default function PropertyFilters() {
       <Separator />
 
       <div className="space-y-3">
-        <Label>Listing Status</Label>
+        <Label>{t("filters.listingStatus.title")}</Label>
         <Select
           defaultValue={searchParams.get("type") || "all"}
           onValueChange={(val) => updateFilter("type", val)}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select status" />
+            <SelectValue placeholder={t("filters.listingStatus.placeholder")} />
           </SelectTrigger>
           <SelectContent className="w-full">
-            <SelectItem value="all">Buy & Rent</SelectItem>
-            <SelectItem value="buy">For Sale</SelectItem>
-            <SelectItem value="rent">For Rent</SelectItem>
+            <SelectItem value="all">
+              {t("filters.listingStatus.all")}
+            </SelectItem>
+            <SelectItem value="buy">
+              {t("filters.listingStatus.buy")}
+            </SelectItem>
+            <SelectItem value="rent">
+              {t("filters.listingStatus.rent")}
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -125,16 +133,21 @@ export default function PropertyFilters() {
 
       <div className="space-y-4">
         <div>
-          <Label className="mb-2 block">Bedrooms</Label>
+          <Label className="mb-2 block">{t("filters.bedrooms.title")}</Label>
           <div className="flex gap-2 flex-wrap">
-            {["Any", "1", "2", "3", "4"].map((b) => {
+            {[t("filters.bedrooms.any"), "1", "2", "3", "4"].map((b) => {
               const isActive =
                 searchParams.get("beds") === b ||
-                (b === "Any" && !searchParams.get("beds"));
+                (b === t("filters.bedrooms.any") && !searchParams.get("beds"));
               return (
                 <button
                   key={b}
-                  onClick={() => updateFilter("beds", b === "Any" ? null : b)}
+                  onClick={() =>
+                    updateFilter(
+                      "beds",
+                      b === t("filters.bedrooms.any") ? null : b,
+                    )
+                  }
                   className={`h-9 w-10 rounded-md border text-sm font-medium transition-colors
                             ${
                               isActive
@@ -143,7 +156,9 @@ export default function PropertyFilters() {
                             }
                         `}
                 >
-                  {b === "Any" ? "Any" : `${b}+`}
+                  {b === t("filters.bedrooms.any")
+                    ? t("filters.bedrooms.any")
+                    : `${b}+`}
                 </button>
               );
             })}
@@ -154,24 +169,32 @@ export default function PropertyFilters() {
       <Separator />
 
       <div className="space-y-3">
-        <Label>Amenities</Label>
+        <Label>{t("filters.amenities.title")}</Label>
         <div className="space-y-2">
-          {["Pool", "Garage", "Air Conditioning", "Gym"].map((item) => {
+          {[
+            { key: "Pool", label: t("filters.amenities.pool") },
+            { key: "Garage", label: t("filters.amenities.garage") },
+            {
+              key: "Air Conditioning",
+              label: t("filters.amenities.airConditioning"),
+            },
+            { key: "Gym", label: t("filters.amenities.gym") },
+          ].map(({ key, label }) => {
             const isChecked = searchParams
               .get("amenities")
               ?.split(",")
-              .includes(item);
+              .includes(key);
             return (
-              <div key={item} className="flex items-center space-x-2">
+              <div key={key} className="flex items-center space-x-2">
                 <Checkbox
-                  id={item}
+                  id={key}
                   checked={isChecked}
                   onCheckedChange={(checked) =>
-                    handleAmenityChange(item, checked as boolean)
+                    handleAmenityChange(key, checked as boolean)
                   }
                 />
-                <Label htmlFor={item} className="font-normal cursor-pointer">
-                  {item}
+                <Label htmlFor={key} className="font-normal cursor-pointer">
+                  {label}
                 </Label>
               </div>
             );
