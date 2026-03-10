@@ -10,6 +10,7 @@ import { MapPin, Bed, Bath, Square } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Property } from "./property-feed";
+import { useTranslations } from "next-intl";
 
 const PropertyListCard = ({
   title,
@@ -21,6 +22,7 @@ const PropertyListCard = ({
   sqft,
   image,
 }: Property) => {
+  const t = useTranslations("listing");
   return (
     <Card className="group overflow-hidden transition-all hover:shadow-lg border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row p-0">
       <div className="relative overflow-hidden bg-slate-100 w-full sm:w-72 md:w-80 sm:shrink-0 h-64 sm:h-auto">
@@ -50,29 +52,31 @@ const PropertyListCard = ({
 
         <CardContent className="p-4 pt-0 flex-1">
           <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-            Beautifully designed property featuring modern amenities and
-            spacious living areas.
+            {t("defaultPropertyDescription")}
           </p>
 
           <div className="flex gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Bed className="h-4 w-4" />
-              <span className="font-medium text-foreground">{beds}</span> Beds
+              <span className="font-medium text-foreground">{beds}</span>{" "}
+              {t("beds")}
             </div>
             <div className="flex items-center gap-1">
               <Bath className="h-4 w-4" />
-              <span className="font-medium text-foreground">{baths}</span> Baths
+              <span className="font-medium text-foreground">{baths}</span>{" "}
+              {t("baths")}
             </div>
             <div className="flex items-center gap-1">
               <Square className="h-4 w-4" />
-              <span className="font-medium text-foreground">{sqft}</span> SqFt
+              <span className="font-medium text-foreground">{sqft}</span>
+              {t("sqft")}
             </div>
           </div>
         </CardContent>
 
         <CardFooter className="p-4 pt-0">
           <Button className="w-full" variant="default" asChild>
-            <Link href={`/listings/${slug}`}>View Property</Link>
+            <Link href={`/listings/${slug}`}>{t("viewProperty")}</Link>
           </Button>
         </CardFooter>
       </div>

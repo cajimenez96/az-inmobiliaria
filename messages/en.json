@@ -285,6 +285,8 @@
     "phonePlaceholder": "Phone Number",
     "defaultMessage": "Hi {agentFirstName}, I am interested in {propertyTitle} at {propertyLocation}. Please send me more details.",
     "sendMessage": "Send Message",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "defaultPropertyDescription": "Beautifully designed property featuring modern amenities and spacious living areas.",
+    "viewProperty": "View Property"
   }
 }

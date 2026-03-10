@@ -279,6 +279,8 @@
     "phonePlaceholder": "Número de teléfono",
     "defaultMessage": "Hola {agentFirstName}, me interesa {propertyTitle} en {propertyLocation}. Por favor envíame más detalles.",
     "sendMessage": "Enviar mensaje",
-    "viewDetails": "Ver detalles"
+    "viewDetails": "Ver detalles",
+    "defaultPropertyDescription": "Propiedad bellamente diseñada con comodidades modernas y amplias áreas de estar.",
+    "viewProperty": "Ver propiedad"
   }
 }
